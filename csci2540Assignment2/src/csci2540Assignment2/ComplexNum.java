@@ -6,8 +6,8 @@ public class ComplexNum {
 	public double imaginary;
 	
 	public ComplexNum () {
-		real = 0;
-		imaginary = 0;
+		this.real = 0;
+		this.imaginary = 0;
 	}
 	
 	public ComplexNum (double real, double imaginary) {
