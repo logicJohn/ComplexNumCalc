@@ -21,8 +21,8 @@ public class ComplexNum {
 	 * Constructs a complex number <i> a + bi </i> both values are stored as doubles.
 	 */
 	public ComplexNum () {
-		this.real = 0;
-		this.imaginary = 0;
+		this.real = 0.0;
+		this.imaginary = 0.0;
 	}
 	
 	/**
@@ -37,7 +37,7 @@ public class ComplexNum {
 	}
 	
 	/**
-	 * 
+	 * Get the real number of the complex number.
 	 * @return The real number of the Object ComplexNum.
 	 */
 	public double getReal () {
@@ -45,7 +45,7 @@ public class ComplexNum {
 	}
 	
 	/**
-	 * 
+	 * Get the imaginary number of the complex number.
 	 * @return The imaginary number of the Object ComplexNum.
 	 */
 	public double getImaginary () {
@@ -85,7 +85,7 @@ public class ComplexNum {
 	 */
 	public ComplexNum sub (ComplexNum subtract) {
 		return new ComplexNum (this.real - subtract.getReal(), this.imaginary
-				+ subtract.getImaginary()); 
+				- subtract.getImaginary()); 
 	}
 
 	/**
@@ -94,8 +94,8 @@ public class ComplexNum {
 	 * @return New ComplexNum which is the multiplied value of two given ComplexNum.
 	 */
 	public ComplexNum mul (ComplexNum multiple) {
-		return new ComplexNum (this.real - multiple.getReal(), this.imaginary
-				+ multiple.getImaginary());
+		return new ComplexNum (this.real * multiple.getReal(), this.imaginary
+				* multiple.getImaginary());
 	}
 	
 	/**
@@ -121,10 +121,17 @@ public class ComplexNum {
 	 * @param num An object.
 	 * @return True if the given is a ComplexNum, else False.
 	 */
-	public boolean equals (Object num) {
-		
-		return true;
+	@Override
+	public boolean equals (Object obj) {
+		if ((obj instanceof ComplexNum)) {
+			ComplexNum temp = (ComplexNum) obj;
+			if (this.getReal() == temp.getReal()) {
+				if (this.getImaginary() == temp.getImaginary()) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
-
 	
 }
